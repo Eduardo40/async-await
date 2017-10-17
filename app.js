@@ -25,7 +25,9 @@ function getFollowers() {
     return Promise.all(users);
 }
 
-const peter = getFollowers("peter","Eduardo40","colt","torvalds","elie").then(users => {
+// NO async-await
+
+getFollowers("peter","Eduardo40","colt","torvalds","elie").then(users => {
     let result;
     if(users.length === 1){
         console.log(`${users[0].login} has ${users[0].followers} followers`);
@@ -36,6 +38,8 @@ const peter = getFollowers("peter","Eduardo40","colt","torvalds","elie").then(us
          console.log(`${result[0].login} has the most followers with ${result[0].followers}.`);
     }
 });
+
+//async-await rocks!
 
 async function starWarsString(number){
         let actor = await get(`https://swapi.co/api/people/${number}`)
